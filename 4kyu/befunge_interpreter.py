@@ -1,14 +1,8 @@
 import random
-
-
 def ascii_to_chr(n):
     return chr(int(n)) if n.isdigit() else n
-
-
 def interpret(code):
-    print(code)
     code = code.split("\n")
-
     output = ""
     stack = []
     row = 0
@@ -18,7 +12,6 @@ def interpret(code):
     count = 0
     while code[row][col] != "@":
         char = code[row][col]
-        print(char, stack, output, row, col)
         if char != '"' and mode == "alphanum":
             stack.append(str(ord(char)))
         elif char.isdigit():
@@ -110,7 +103,7 @@ def interpret(code):
             x = int(stack.pop())
             v = int(stack.pop())
             y_row = list(code[y])
-            y_row[x]=str(v)
+            y_row[x] = str(chr(v))
             code[y] = "".join(y_row)           
         if direction == "E":
             col += 1
@@ -121,6 +114,4 @@ def interpret(code):
         elif direction == "S":
             row += 1
         count += 1
-
     return output
-
