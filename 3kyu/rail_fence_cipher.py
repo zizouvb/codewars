@@ -15,3 +15,22 @@ def encode_rail_fence_cipher(string, n):
     for key,value in my_dict.items():
         ans+="".join(value)
     return ans  
+        
+def decode_rail_fence_cipher(string, n):
+    w = len(string)
+    queue = string
+    my_array = [["@" for x in range(w)] for y in range(n)]
+    for j in range(n):
+        line_dir=[0,1]
+        for i in range(w):
+            if line_dir[0]==j and i>=j and len(queue)>0:
+                my_array[line_dir[0]][i] = queue[0]
+                queue = queue[1:]
+            line_dir=get_next_line(line_dir, n)
+    ans=""
+    for i in range(w):
+        for j in range(n):
+            if my_array[j][i]!="@":
+                ans+=  my_array[j][i]
+    return ans
+            
