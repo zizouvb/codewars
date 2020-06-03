@@ -16,6 +16,4 @@ def greet(language):
         'spanish': 'Bienvenido',
         'swedish': 'Valkommen',
         'welsh': 'Croeso'}
-    if language in my_dict:
-        return my_dict[language]
-    return "Welcome"
+    return my_dict.get(language, "Welcome")
