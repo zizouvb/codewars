@@ -1,0 +1,8 @@
+def make_readable(seconds):
+    duration = {"hour":3600, "minute":60,"second":1}
+    items=[]
+    for title, duration in duration.items():
+        value = seconds//duration
+        items.append(str(value).zfill(2))
+        seconds %= duration
+    return ":".join(items)
