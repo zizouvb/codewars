@@ -1,3 +1,3 @@
 function songDecoder(song){
-  return song.split(["WUB"]).join(" ").split(" ").filter(i=>i).join(" ")
+  return song.split(["WUB"]).filter(i=>i).join(" ")
 }
